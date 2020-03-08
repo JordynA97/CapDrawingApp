@@ -1,21 +1,107 @@
 body{
     background: whitesmoke;
     font-family: tahoma, verdana, sans serif;
+    overflow: hidden;
+ }
+button:focus {outline:0;}
+ 
+ #drawingList{
+    visibility: hidden;
  }
 
- canvas{
+canvas{
     background: #ffffff;
     box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    float: left;
  }
  
  #controls{
-     margin-top:1em;
+    float:left;
+ }
+ 
+ #emailForm{
+    float: left;
  }
  
  #controls button{
-     font-size:1.25em;
+    font-size:1.25em;
  }
  
  #controls button:hover{
-     background-color:lightgray;
+    background-color:lightgray;
+ }
+
+ #colorPalette{
+    float: left;
+    margin: 7%;
+    align-self: center;
+ }
+
+ #redColor, #pinkColor, #orangeColor, #yellowColor, #greenColor, #mintColor, #blueColor, #purpleColor, #whiteColor, #blackColor{
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    border-color: black; 
+ }
+
+ #redColor, #orangeColor, #greenColor, #blueColor, #whiteColor{
+    margin-right: 10px;
+ }
+
+ #redColor{
+    background: #F7325E;
+    border: 2px solid #5F5F5F;
+ }
+
+ #pinkColor{
+    background: #F96574;
+    border: 2px solid #5F5F5F;
+ }
+
+ #orangeColor{
+    background: #FFB629;
+    opacity: 0.8;
+    border: 2px solid #5F5F5F;
+ }
+
+ #yellowColor{
+    background: #ECD12E;
+    opacity: 0.8;
+    border: 2px solid #5F5F5F;
+ }
+
+ #greenColor{
+    background: #A4C963;
+    opacity: 0.8;
+    border: 2px solid #5F5F5F;
+ }
+
+ #mintColor{
+    background: #5CBF9F;
+    opacity: 0.8;
+    border: 2px solid #5F5F5F;
+ }
+
+ #blueColor{
+    background: #75C9E3;
+    opacity: 0.8;
+    border: 2px solid #5F5F5F;
+ }
+
+ #purpleColor{
+    background: #8B699B;
+    opacity: 0.8;
+    border: 2px solid #5F5F5F;
+ }
+
+ #whiteColor{
+    background: #FFFFFF;
+    opacity: 0.8;
+    border: 2px solid #5F5F5F;
+ }
+
+ #blackColor{
+    background: #000000;
+    opacity: 0.8;
+    border: 2px solid #5F5F5F;
  }

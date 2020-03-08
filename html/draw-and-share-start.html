@@ -6,10 +6,20 @@
 	<title>Draw!</title>
 </head>
 <body>
-	<center>
-	<canvas id="canvas" width="1000px" height="800px"></canvas>
-	</center>
-	
+	<canvas id="canvas" width="1100px" height="700px"></canvas>
+
+	<div id="colorPalette">
+		<span><button id="redColor"></button><button id="pinkColor"></button></span>
+		<p></p>
+		<span><button id="orangeColor"></button><button id="yellowColor"></button></span>
+		<p></p>
+		<span><button id="greenColor"></button><button id="mintColor"></button></span>
+		<p></p>
+		<span><button id="blueColor"></button><button id="purpleColor"></button></span>
+		<p></p>
+		<span><button id="whiteColor"></button><button id="blackColor"></button></span>
+	</div>
+
 	<div id="controls">
 		<span><button id="clearButton">Clear Canvas</button></span>
 		<span><button id="saveButton">Save to Cloud</button></span>
@@ -26,7 +36,6 @@
 		<button id="submitEmailButton" type="button" className="templateButtons" onclick="emailDrawing()">Submit</button>
 	</form>
 
-	<h2>Saved Drawings</h2>
 	<ol id = "drawingList">
 	</ol>
 	
