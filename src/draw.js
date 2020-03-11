@@ -36,7 +36,7 @@
 	// FUNCTIONS
 	function init(){
 		ctx = canvas.getContext('2d');
-		lineWidth = 10;
+		lineWidth = 3;
 		strokeStyle = "red";
 		
 		ctx.lineWidth = lineWidth;
