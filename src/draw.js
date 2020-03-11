@@ -10,6 +10,21 @@
 	let sizeSlider = document.querySelector("#sizeSlider");
 	var dlLink;
 	var imgURL;
+	
+	/* v COLOR BUTTONS v */
+
+	let redColor = document.querySelector("#redColor");
+	let pinkColor = document.querySelector("#pinkColor");
+	let orangeColor = document.querySelector("#orangeColor");
+	let yellowColor = document.querySelector("#yellowColor");
+	let greenColor = document.querySelector("#greenColor");
+	let mintColor = document.querySelector("#mintColor");
+	let blueColor = document.querySelector("#blueColor");
+	let purpleColor = document.querySelector("#purpleColor");
+	let whiteColor = document.querySelector("#whiteColor");
+	let blackColor = document.querySelector("#blackColor");
+
+	/* ^ COLOR BUTTONS ^ */
 
 	//firebase
 	const DRAWINGPATH = "saveDrawings";
@@ -40,6 +55,17 @@
 		clearCloudButton.onclick = doClearCloud;
 		exportBtn.onclick = exportCanvasAsPNG;
 		window.onhashchange = onLocationHashChanged;
+
+		redColor.onclick = changeColor;
+		pinkColor.onclick = changeColor;
+		orangeColor.onclick = changeColor;
+		yellowColor.onclick = changeColor;
+		greenColor.onclick = changeColor;
+		mintColor.onclick = changeColor;
+		blueColor.onclick = changeColor;
+		purpleColor.onclick = changeColor;
+		whiteColor.onclick = changeColor;
+		blackColor.onclick = changeColor;
 	}
 	
 	function loadDrawing(points){
@@ -165,10 +191,15 @@
 		//doing ^ all at the same time makes no change to the actual html page
 	}
 
-	function changePenSize(){
+	function changePenSize(){ //just takes the slider val and changes line width.
 		console.log(ctx);
 		lineWidth = sizeSlider.value;
 		console.log("size slider : " + sizeSlider.value);
+	}
+
+	function changeColor(){//general change function for the colors
+		//the values are being set in the html
+		strokeStyle = this.value;
 	}
 
 	//firebase
