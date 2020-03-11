@@ -7,7 +7,7 @@
 	let clearButton = document.querySelector("#clearButton");
 	let saveButton = document.querySelector("#saveButton");
 	let clearCloudButton = document.querySelector("#clearCloudButton");
-
+	let sizeSlider = document.querySelector("#sizeSlider");
 	var dlLink;
 	var imgURL;
 
@@ -21,7 +21,7 @@
 	// FUNCTIONS
 	function init(){
 		ctx = canvas.getContext('2d');
-		lineWidth = 3;
+		lineWidth = 10;
 		strokeStyle = "red";
 		
 		ctx.lineWidth = lineWidth;
@@ -34,6 +34,7 @@
 		canvas.onmousemove = doMousemove;
 		canvas.onmouseup = doMouseup;
 		canvas.onmouseout = doMouseout;
+		sizeSlider.onchange = changePenSize;
 		clearButton.onclick = doClear;
 		saveButton.onclick = doSave;
 		clearCloudButton.onclick = doClearCloud;
@@ -162,6 +163,12 @@
 		// dlLink.click();//auto clicks the link
 		// document.body.removeChild(dlLink);//deletes the link
 		//doing ^ all at the same time makes no change to the actual html page
+	}
+
+	function changePenSize(){
+		console.log(ctx);
+		lineWidth = sizeSlider.value;
+		console.log("size slider : " + sizeSlider.value);
 	}
 
 	//firebase
