@@ -3,13 +3,16 @@
 	let ctx,dragging=false,lineWidth,strokeStyle;
 	let allPoints = [];
 	let currentLayer = [];
-	let exportBtn = document.querySelector("#exportPNG");
 	let clearButton = document.querySelector("#clearButton");
-	let saveButton = document.querySelector("#saveButton");
-	let clearCloudButton = document.querySelector("#clearCloudButton");
 	let sizeSlider = document.querySelector("#sizeSlider");
 	var dlLink;
 	var imgURL;
+
+	//buttons we dont need now but may need later?
+	//let exportBtn = document.querySelector("#exportPNG");
+	//let saveButton = document.querySelector("#saveButton");
+	//let clearCloudButton = document.querySelector("#clearCloudButton");
+	//let finishButton = document.querySelector("#closeCompleteScreen");
 	
 	/* v COLOR BUTTONS v */
 
@@ -26,7 +29,7 @@
 
 	/* ^ COLOR BUTTONS ^ */
 
-	//firebase
+	//firebase variables
 	const DRAWINGPATH = "saveDrawings";
 	let allDrawings = {};
 	
@@ -51,9 +54,8 @@
 		canvas.onmouseout = doMouseout;
 		sizeSlider.onchange = changePenSize;
 		clearButton.onclick = doClear;
-		saveButton.onclick = doSave;
-		clearCloudButton.onclick = doClearCloud;
-		exportBtn.onclick = exportCanvasAsPNG;
+		//clearCloudButton.onclick = doClearCloud;
+		//exportBtn.onclick = exportCanvasAsPNG;
 		window.onhashchange = onLocationHashChanged;
 
 		redColor.onclick = changeColor;
@@ -155,18 +157,10 @@
 		allPoints = [];
 	}
 	
-	function doSave(){
-		if(allPoints.length == 0) return;
-		console.log("doSave");
-		firebase.database().ref(DRAWINGPATH).push({
-			points: allPoints
-		});
-	}
+	// function doClearCloud(){
+	// 	firebase.database().ref(DRAWINGPATH).remove();
 	
-	function doClearCloud(){
-		firebase.database().ref(DRAWINGPATH).remove();
-	
-	}
+	// }
 	
 	function onLocationHashChanged(){
 		let key = window.location.hash.substring(1);
@@ -175,21 +169,21 @@
 		console.log("changed drawing");
 	}
 	
-	function exportCanvasAsPNG() {
-		//console.log("button going through")
+	// function exportCanvasAsPNG() {
+	// 	//console.log("button going through")
 	
-		imgURL = canvas.toDataURL("image/png"); //gets canvas data as png
+	// 	imgURL = canvas.toDataURL("image/png"); //gets canvas data as png
 	
-		dlLink = document.createElement('a');//creates a download link
-		dlLink.download = "image";//this is the name of the file to be downloaded
-		dlLink.href = imgURL;//sets the link of the a element
-		dlLink.dataset.downloadurl = ["image/png", dlLink.download, dlLink.href].join(':');//creates the actual download
+	// 	dlLink = document.createElement('a');//creates a download link
+	// 	dlLink.download = "image";//this is the name of the file to be downloaded
+	// 	dlLink.href = imgURL;//sets the link of the a element
+	// 	dlLink.dataset.downloadurl = ["image/png", dlLink.download, dlLink.href].join(':');//creates the actual download
 	
-		// document.body.appendChild(dlLink);//adds the download link
-		// dlLink.click();//auto clicks the link
-		// document.body.removeChild(dlLink);//deletes the link
-		//doing ^ all at the same time makes no change to the actual html page
-	}
+	// 	// document.body.appendChild(dlLink);//adds the download link
+	// 	// dlLink.click();//auto clicks the link
+	// 	// document.body.removeChild(dlLink);//deletes the link
+	// 	//doing ^ all at the same time makes no change to the actual html page
+	// }
 
 	function changePenSize(){ //just takes the slider val and changes line width.
 		console.log(ctx);
@@ -249,8 +243,6 @@
   };
   firebase.initializeApp(config);
   
-  console.log(firebase);
-  
   firebase.database().ref(DRAWINGPATH).on("value",onDataChanged, onFirebaseError);
  }
 
@@ -300,4 +292,29 @@
 	//close the form after its sent (edit this later for when we make an overlay for it)
 	//document.getElementById("emailUploadTemplates").style.display = "none";
 }
- 
+
+//for EMAIL Overlay
+function emailOverlayOn() {
+	document.getElementById("emailOverlay").style.display = "block";
+	completeScreenOff();
+}
+  
+function emailOverlayOff() {
+	document.getElementById("emailOverlay").style.display = "none";
+	completeScreenOn();
+}
+
+//for COMPLETE screen overlay
+function completeScreenOn() {
+	document.getElementById("completeScreen").style.display = "block";
+}
+  
+function completeScreenOff() {
+	document.getElementById("completeScreen").style.display = "none";
+
+	if(allPoints.length == 0) return;
+		console.log("doSave");
+		firebase.database().ref(DRAWINGPATH).push({
+			points: allPoints
+		});
+}
