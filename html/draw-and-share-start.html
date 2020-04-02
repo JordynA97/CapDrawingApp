@@ -3,12 +3,21 @@
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+	<link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
 	<title>Draw!</title>
 </head>
 <body>
-	<canvas id="canvas" width="1100px" height="700px"></canvas>
+	<div id="topBorder">
+		<span><p id="bannerTitle">Draw your own creature
+		<span></span><button id="trash" onclick="doClear()">trash</button></span>
+		<span><button id="undo" onclick="undoButton()">undo</button></span>
+	</p></span>
+	</div>
+
+	<canvas id="canvas"></canvas>
 
 	<div id="colorPalette">
+		<button id= "createStencils">Stencils</button>
 		<span><button id="redColor" value="#F7325E"></button><button id="pinkColor" value="#F96574"></button></span>
 		<p></p>
 		<span><button id="orangeColor" value="#FFB629"></button><button id="yellowColor" value="#ECD12E"></button></span>
@@ -18,33 +27,18 @@
 		<span><button id="blueColor" value="#75C9E3"></button><button id="purpleColor" value="#8B699B"></button></span>
 		<p></p>
 		<span><button id="whiteColor" value="#FFFFFF"></button><button id="blackColor" value="#000000"></button></span>
-	</div>
-
-	<div id="controls">
-		<span><button id="completeButton" onclick="completeScreenOn()">Complete</button></span>
-		<span><button id="clearButton">Clear Canvas</button></span>
-		<span><button id= "createOverlay">Animals to Draw!</button></span>
-		<span>Pen Size : <input type="range" id="sizeSlider" min="1" max="10" value="3"></span>
+		<input type="range" id="sizeSlider" min="1" max="10" value="3">
+		<button id="completeButton" onclick="completeScreenOn()">Complete</button>
 	</div>
 
 	<div id="completeScreen">
 		<strong>Name Your Creature:</strong
 			><input type="text" id="creatureName"></input>
 			<p></p>
-		<span><button id="openEmailForm" onclick="emailOverlayOn()">Email Me</button></span>
+		<span><button id="downloadLink" onclick="exportCanvasAsPNG()">Download</button></span>
 		<span><button id="closeCompleteScreen" onclick="completeScreenOff()">Finish</button></span>
 	</div>
 
-	<div id="emailOverlay">
-		<form id="emailForm" autoComplete = "off">
-			<strong id="recipientName"> Name: </strong><input type="text" id="emailRecipientName" className="textBars"></input>
-		<p></p>
-			<strong id="emailText"> Email: </strong><input type="text" id="email" className="textBars"></input>
-		<p></p>
-			<span><button id="submitEmailButton" type="button" className="templateButtons" onclick="emailDrawing()">Submit</button></span>
-			<span><button id="backButton" onclick="emailOverlayOff()">Back</button></span>
-		</form>
-	</div>
 	<p id="drawingList"></p>
 	<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
 	<script src = "../src/draw.js">

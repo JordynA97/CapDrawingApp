@@ -1,135 +1,154 @@
 body{
-    background: whitesmoke;
-    font-family: tahoma, verdana, sans serif;
-    overflow: hidden;
- }
+   background: whitesmoke;
+   font-family: 'Heebo', sans-serif;
+   /* overflow: hidden; */
+}
+
 button:focus {outline:0;}
- 
- #drawingList{
-    visibility: hidden;
- }
+
+#drawingList{
+   visibility: hidden;
+}
 
 canvas{
-    background: #ffffff;
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-    float: left;
- }
- 
- #controls{
-    float:left;
- }
- 
- #emailForm{
-    float: left;
- }
- 
- #controls button{
-    font-size:1.25em;
- }
- 
- #controls button:hover{
-    background-color:lightgray;
- }
+   background: #ffffff;
+   float: left;
+   width: 100%;
+   height: 100%;
+}
 
- #colorPalette{
-    float: left;
-    margin: 7%;
-    align-self: center;
- }
-
- #redColor, #pinkColor, #orangeColor, #yellowColor, #greenColor, #mintColor, #blueColor, #purpleColor, #whiteColor, #blackColor{
-    width: 25px;
-    height: 25px;
-    border-radius: 100%;
-    border-color: black; 
- }
-
- #redColor, #orangeColor, #greenColor, #blueColor, #whiteColor{
-    margin-right: 10px;
- }
-
- #redColor{
-    background: #F7325E;
-    border: 2px solid #5F5F5F;
- }
-
- #pinkColor{
-    background: #F96574;
-    border: 2px solid #5F5F5F;
- }
-
- #orangeColor{
-    background: #FFB629;
-    opacity: 0.8;
-    border: 2px solid #5F5F5F;
- }
-
- #yellowColor{
-    background: #ECD12E;
-    opacity: 0.8;
-    border: 2px solid #5F5F5F;
- }
-
- #greenColor{
-    background: #A4C963;
-    opacity: 0.8;
-    border: 2px solid #5F5F5F;
- }
-
- #mintColor{
-    background: #5CBF9F;
-    opacity: 0.8;
-    border: 2px solid #5F5F5F;
- }
-
- #blueColor{
-    background: #75C9E3;
-    opacity: 0.8;
-    border: 2px solid #5F5F5F;
- }
-
- #purpleColor{
-    background: #8B699B;
-    opacity: 0.8;
-    border: 2px solid #5F5F5F;
- }
-
- #whiteColor{
-    background: #FFFFFF;
-    opacity: 0.8;
-    border: 2px solid #5F5F5F;
- }
-
- #blackColor{
-    background: #000000;
-    opacity: 0.8;
-    border: 2px solid #5F5F5F;
- }
-
- #emailOverlay {
-   position: fixed; /* Sit on top of the page content */
-   display: none; /* Hidden by default */
-   width: 100%; /* Full width (cover the whole page) */
-   height: 100%; /* Full height (cover the whole page) */
-   top: 0;
-   left: 0;
+#completeButton, #clearButton, #createStencils, #sizeSlider{
    right: 0;
-   bottom: 0;
-   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-   cursor: pointer; /* Add a pointer on hover */
- }
+   position: absolute;
+   font-family: 'Heebo', sans-serif;
 
- #completeScreen{
-   position: fixed; /* Sit on top of the page content */
-   display: none; /* Hidden by default */
-   width: 100%; /* Full width (cover the whole page) */
-   height: 100%; /* Full height (cover the whole page) */
-   top: 0;
-   left: 0;
+}
+
+#completeButton{
+   margin-top: 20vw;
+}
+
+#sizeSlider{
+   margin-top: 10vw;
+}
+
+#completeButton :hover, #clearButton :hover, #createStencils :hover, #sizeSlider :hover{
+   background-color:lightgray;
+}
+
+#colorPalette{
    right: 0;
-   bottom: 0;
-   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-   cursor: pointer; /* Add a pointer on hover */
- }
+   margin-top: 2vw;
+   align-self: center;
+   z-index: 2;
+   position: absolute;
+   height: 50vw;
+   background-color: lightgray;
+   width: 10%;
+   align-items: center;
+   
+}
+
+#redColor, #pinkColor{
+   margin-top:75%;
+   top:0;
+}
+#redColor, #pinkColor, #orangeColor, #yellowColor, #greenColor, #mintColor, #blueColor, #purpleColor, #whiteColor, #blackColor{
+   width: 25px;
+   height: 25px;
+   border-radius: 100%;
+   border-color: black; 
+}
+
+#redColor, #orangeColor, #greenColor, #blueColor, #whiteColor{
+   margin-right: 10px;
+}
+
+#redColor{
+   background: #F7325E;
+   border: 2px solid #5F5F5F;
+}
+
+#pinkColor{
+   background: #F96574;
+   border: 2px solid #5F5F5F;
+}
+
+#orangeColor{
+   background: #FFB629;
+   opacity: 0.8;
+   border: 2px solid #5F5F5F;
+}
+
+#yellowColor{
+   background: #ECD12E;
+   opacity: 0.8;
+   border: 2px solid #5F5F5F;
+}
+
+#greenColor{
+   background: #A4C963;
+   opacity: 0.8;
+   border: 2px solid #5F5F5F;
+}
+
+#mintColor{
+   background: #5CBF9F;
+   opacity: 0.8;
+   border: 2px solid #5F5F5F;
+}
+
+#blueColor{
+   background: #75C9E3;
+   opacity: 0.8;
+   border: 2px solid #5F5F5F;
+}
+
+#purpleColor{
+   background: #8B699B;
+   opacity: 0.8;
+   border: 2px solid #5F5F5F;
+}
+
+#whiteColor{
+   background: #FFFFFF;
+   opacity: 0.8;
+   border: 2px solid #5F5F5F;
+}
+
+#blackColor{
+   background: #000000;
+   opacity: 0.8;
+   border: 2px solid #5F5F5F;
+}
+
+#completeScreen{
+position: fixed; /* Sit on top of the page content */
+display: none; /* Hidden by default */
+width: 100%; /* Full width (cover the whole page) */
+height: 100%; /* Full height (cover the whole page) */
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+cursor: pointer; /* Add a pointer on hover */
+}
+
+/* TOP OF THE PAGE */
+#topBorder{
+width: 100%; 
+height: 2vw; 
+background-color: #086951;
+z-index: 2;
+}
+
+#trash, #undo{
+   float: right;
+}
+
+#bannerTitle{
+   color: white;
+   margin-left: 10px;
+}
