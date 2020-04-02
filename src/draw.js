@@ -172,9 +172,9 @@ function exportCanvasAsPNG() {
 	//console.log("button going through")
 
 	imgURL = canvas.toDataURL("image/png"); //gets canvas data as png
-
+	
 	dlLink = document.createElement('a');//creates a download link
-	dlLink.download = "image";//this is the name of the file to be downloaded
+	dlLink.download = document.querySelector("#creatureName").value;//this is the name of the file to be downloaded
 	dlLink.href = imgURL;//sets the link of the a element
 	dlLink.dataset.downloadurl = ["image/png", dlLink.download, dlLink.href].join(':');//creates the actual download
 
