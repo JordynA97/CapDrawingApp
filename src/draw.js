@@ -3,9 +3,17 @@
 let ctx,dragging=false,lineWidth,strokeStyle;
 let allPoints = [];
 let currentLayer = [];
+let undoPoints = [];
 let sizeSlider = document.querySelector("#sizeSlider");
 var dlLink;
 var imgURL;
+
+
+/* v UNDO and REDO v */
+
+	let undoBtn = document.querySelector
+
+/* ^ UNDO and REDO ^ */
 
 /* v COLOR BUTTONS v */
 
@@ -101,6 +109,7 @@ function doMousedown(e){
 	//points
 	currentLayer.push(mouse);
 	allPoints.push(currentLayer);
+	undoPoints = [];//clears undo array so no undo/redo produces wanted results
 }
 
 function doMousemove(e) {
@@ -194,6 +203,8 @@ function changeColor(){//general change function for the colors
 	strokeStyle = this.value;
 }
 
+
+
 //firebase
 function onDataChanged(data){
 	let bigString = "";
@@ -263,5 +274,23 @@ function completeScreenOff() {
 
 //CREATE UNDO FUNCTIONALITY
 function undoButton() {
+	if(allPoints.length > 0){
+		undoPoints.push(allPoints[allPoints.length-1]);
+		allPoints.pop();
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		loadDrawing(allPoints);
+		console.log("pop");
+	}
+	
+}
 
+function redoButton(){
+	if(undoPoints.length > 0){
+		allPoints.push(undoPoints[undoPoints.length-1]);
+		undoPoints.pop();
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		loadDrawing(allPoints);
+		console.log("push");
+	}
+	
 }
