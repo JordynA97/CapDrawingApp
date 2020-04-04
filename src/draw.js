@@ -7,7 +7,7 @@ let undoPoints = [];
 let sizeSlider = document.querySelector("#sizeSlider");
 var dlLink;
 var imgURL;
-
+let currentStencil;
 
 /* v UNDO and REDO v */
 
@@ -29,6 +29,15 @@ let whiteColor = document.querySelector("#whiteColor");
 let blackColor = document.querySelector("#blackColor");
 
 /* ^ COLOR BUTTONS ^ */
+
+/* v STENCIL BUTTONS v */
+let iguanaBtn = document.querySelector("#iguanaStencil");
+let frogBtn = document.querySelector("#frogStencil");
+let jaguarBtn = document.querySelector("#jaguarStencil");
+let monkeyBtn = document.querySelector("#monkeyStencil");
+let slothBtn = document.querySelector("#slothStencil");
+let toucanBtn = document.querySelector("#toucanStencil");
+/* ^ STENCIL BUTTONS ^ */
 
 //firebase variables
 const DRAWINGPATH = "saveDrawings";
@@ -75,6 +84,13 @@ function init(){
 	purpleColor.onclick = changeColor;
 	whiteColor.onclick = changeColor;
 	blackColor.onclick = changeColor;
+
+	iguanaBtn.onclick = stencilSelect;
+	frogBtn.onclick = stencilSelect;
+	jaguarBtn.onclick = stencilSelect;
+	monkeyBtn.onclick = stencilSelect;
+	slothBtn.onclick = stencilSelect;
+	toucanBtn.onclick = stencilSelect;
 }
 
 function loadDrawing(points){
@@ -141,6 +157,7 @@ function doMouseup(e) {
 		console.log(allPoints);
 		dragging = false;
 	}
+	loadStencil(currentStencil);
 }
 
 // if the user drags out of the canvas
@@ -163,6 +180,7 @@ function doMouseout(e) {
 function doClear(){
 	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 	allPoints = [];
+	loadStencil(currentStencil);
 }
 
 // function doClearCloud(){
@@ -281,7 +299,7 @@ function undoButton() {
 		loadDrawing(allPoints);
 		console.log("pop");
 	}
-	
+	loadStencil(currentStencil);
 }
 
 function redoButton(){
@@ -292,5 +310,37 @@ function redoButton(){
 		loadDrawing(allPoints);
 		console.log("push");
 	}
+	loadStencil(currentStencil);
+}
+
+//STENCILS
+
+function loadStencil(name){
 	
+	var ctx = canvas.getContext('2d');
+	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+	loadDrawing(allPoints);
+                //Loading of the home test image - img1
+                var img1 = new Image();
+                img1.src = '../Stencils/' + name + '.png';
+                //drawing of the test image - img1
+                img1.onload = function () {
+                    //draw background image
+                    ctx.drawImage(img1, 0, 0);
+                    //draw a box over the top
+                    
+                }; 
+}
+
+function stencilSelect(){
+	currentStencil = this.value;
+	loadStencil(this.value);
+	
+}
+
+function removeStencil(){
+	currentStencil = "";
+	var ctx = canvas.getContext('2d');
+	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+	loadDrawing(allPoints);
 }
