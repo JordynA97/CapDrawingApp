@@ -2,8 +2,10 @@
 //set variables
 let ctx,dragging=false,lineWidth,strokeStyle;
 let allPoints = [];
+let allStrokes = [];
 let currentLayer = [];
 let undoPoints = [];
+let undoStrokes = [];
 let sizeSlider = document.querySelector("#sizeSlider");
 var dlLink;
 var imgURL;
@@ -99,15 +101,26 @@ function loadDrawing(points){
 	ctx.strokeStyle = strokeStyle;
 	ctx.lineWidth = lineWidth;
 	
-	for(let layer of points){
-		ctx.beginPath();
-		ctx.moveTo(layer[0].x, layer[0].y);
+	// for(let layer of points){
+	// 	ctx.beginPath();
+	// 	ctx.moveTo(layer[0].x, layer[0].y);
 		
-		for(let p of layer){
-			ctx.lineTo(p.x, p.y);
+	// 	for(let p of layer){
+	// 		ctx.lineTo(p.x, p.y);
+	// 		ctx.stroke();
+	// 	}
+		
+	// 	ctx.closePath();
+	// }
+
+	for(let i = 0; i < points.length; i++){
+		ctx.lineWidth = allStrokes[i];
+		ctx.beginPath();
+		ctx.moveTo(points[i][0].x, points[i][0].y);
+		for(let j = 0; j < points[i].length; j++){
+			ctx.lineTo(points[i][j].x, points[i][j].y);
 			ctx.stroke();
 		}
-		
 		ctx.closePath();
 	}
 	
@@ -125,7 +138,9 @@ function doMousedown(e){
 	//points
 	currentLayer.push(mouse);
 	allPoints.push(currentLayer);
+	allStrokes.push(lineWidth);
 	undoPoints = [];//clears undo array so no undo/redo produces wanted results
+	undoStrokes = [];
 }
 
 function doMousemove(e) {
@@ -295,6 +310,8 @@ function undoButton() {
 	if(allPoints.length > 0){
 		undoPoints.push(allPoints[allPoints.length-1]);
 		allPoints.pop();
+		undoStrokes.push(allStrokes[allStrokes.length-1]);
+		allStrokes.pop();
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		loadDrawing(allPoints);
 		console.log("pop");
@@ -306,6 +323,8 @@ function redoButton(){
 	if(undoPoints.length > 0){
 		allPoints.push(undoPoints[undoPoints.length-1]);
 		undoPoints.pop();
+		allStrokes.push(undoStrokes[undoStrokes.length-1]);
+		undoStrokes.pop();
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		loadDrawing(allPoints);
 		console.log("push");
