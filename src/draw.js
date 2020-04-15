@@ -200,6 +200,8 @@ function doMouseout(e) {
 function doClear(){
 	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 	allPoints = [];
+	allStrokes = [];
+	allColors = []
 	loadStencil(currentStencil);
 }
 
