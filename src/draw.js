@@ -3,9 +3,11 @@
 let ctx,dragging=false,lineWidth,strokeStyle;
 let allPoints = [];
 let allStrokes = [];
+let allColors = [];
 let currentLayer = [];
 let undoPoints = [];
 let undoStrokes = [];
+let undoColors = [];
 let sizeSlider = document.querySelector("#sizeSlider");
 var dlLink;
 var imgURL;
@@ -112,9 +114,10 @@ function loadDrawing(points){
 		
 	// 	ctx.closePath();
 	// }
-
+	// had to rewrite this loop since for each wouldn't allow for proper functionality
 	for(let i = 0; i < points.length; i++){
 		ctx.lineWidth = allStrokes[i];
+		ctx.strokeStyle = allColors[i];
 		ctx.beginPath();
 		ctx.moveTo(points[i][0].x, points[i][0].y);
 		for(let j = 0; j < points[i].length; j++){
@@ -139,8 +142,10 @@ function doMousedown(e){
 	currentLayer.push(mouse);
 	allPoints.push(currentLayer);
 	allStrokes.push(lineWidth);
+	allColors.push(strokeStyle);
 	undoPoints = [];//clears undo array so no undo/redo produces wanted results
 	undoStrokes = [];
+	undoColors = [];
 }
 
 function doMousemove(e) {
@@ -312,6 +317,8 @@ function undoButton() {
 		allPoints.pop();
 		undoStrokes.push(allStrokes[allStrokes.length-1]);
 		allStrokes.pop();
+		undoColors.push(allColors[allColors.length-1]);
+		allColors.pop();
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		loadDrawing(allPoints);
 		console.log("pop");
@@ -325,6 +332,8 @@ function redoButton(){
 		undoPoints.pop();
 		allStrokes.push(undoStrokes[undoStrokes.length-1]);
 		undoStrokes.pop();
+		allColors.push(undoColors[undoColors.length-1]);
+		undoColors.pop();
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		loadDrawing(allPoints);
 		console.log("push");
@@ -345,7 +354,7 @@ function loadStencil(name){
                 //drawing of the test image - img1
                 img1.onload = function () {
                     //draw background image
-                    ctx.drawImage(img1, 0, 0);
+                    ctx.drawImage(img1, (ctx.canvas.width/2) - (ctx.canvas.height/2), (ctx.canvas.height/2) - ((ctx.canvas.height * 0.82)/2),ctx.canvas.height,ctx.canvas.height * 0.82);
                     //draw a box over the top
                     
                 }; 
