@@ -126,7 +126,6 @@ function loadDrawing(points){
 		}
 		ctx.closePath();
 	}
-	
 }
 
 //change drawing to start from on drag to on mouse down.
@@ -205,11 +204,6 @@ function doClear(){
 	loadStencil(currentStencil);
 }
 
-// function doClearCloud(){
-// 	firebase.database().ref(DRAWINGPATH).remove();
-
-// }
-
 function onLocationHashChanged(){
 	let key = window.location.hash.substring(1);
 	allPoints = allDrawings[key].points;
@@ -242,8 +236,6 @@ function changeColor(){//general change function for the colors
 	//the values are being set in the html
 	strokeStyle = this.value;
 }
-
-
 
 //firebase
 function onDataChanged(data){
@@ -293,23 +285,6 @@ function initFirebase(){
 	firebase.initializeApp(config);
 
 	firebase.database().ref(DRAWINGPATH).on("value",onDataChanged, onFirebaseError);
-}
-
-//for COMPLETE screen overlay
-function completeScreenOn() {
-	document.getElementById("completeScreen").style.display = "block";
-}
-  
-function completeScreenOff() {
-	document.getElementById("completeScreen").style.display = "none";
-
-	if(allPoints.length == 0) return;
-		console.log("doSave");
-		firebase.database().ref(DRAWINGPATH).push({
-			points: allPoints
-		});
-
-	doClear();
 }
 
 //CREATE UNDO FUNCTIONALITY
@@ -363,9 +338,14 @@ function loadStencil(name){
 }
 
 function stencilSelect(){
-	currentStencil = this.value;
-	loadStencil(this.value);
-	
+	//error is because its looking for an undefined stencil when one isnt selected.
+	//can either be fixed or can be left alone too
+	if(this.value === "undefined"){
+		removeStencil();
+	}else{
+		currentStencil = this.value;
+		loadStencil(this.value);
+	}
 }
 
 function removeStencil(){
@@ -373,4 +353,55 @@ function removeStencil(){
 	var ctx = canvas.getContext('2d');
 	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 	loadDrawing(allPoints);
+}
+
+function trashDrawing(){
+	trashScreenOff();
+	doClear();
+}
+
+function completeWasChecked(){
+	checkCompleteOff();
+	completeScreenOn();
+}
+//ALL OVERLAY CONTROLS (repetitive i know)
+
+function trashScreenOn(){
+	document.getElementById("trashScreen").style.display = "flex";
+}
+
+function trashScreenOff(){
+	document.getElementById("trashScreen").style.display = "none";
+}
+
+function stencilScreenOn(){
+	document.getElementById("stencilScreen").style.display = "block";
+}
+
+function stencilScreenOff(){
+	document.getElementById("stencilScreen").style.display = "none";
+}
+
+function completeScreenOn() {
+	document.getElementById("completeScreen").style.display = "block";
+}
+  
+function completeScreenOff() {
+	document.getElementById("completeScreen").style.display = "none";
+
+	if(allPoints.length == 0) return;
+		console.log("doSave");
+		firebase.database().ref(DRAWINGPATH).push({
+			points: allPoints
+		});
+
+	doClear();
+}
+
+function checkCompleteOn(){
+	document.getElementById("completeCheckScreen").style.display = "flex";
+}
+
+function checkCompleteOff(){
+	document.getElementById("completeCheckScreen").style.display = "none";
 }

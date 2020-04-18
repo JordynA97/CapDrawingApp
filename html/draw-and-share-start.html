@@ -9,7 +9,7 @@
 <body>
 	<div id="topBorder">
 		<span><p id="bannerTitle">Draw your own creature
-		<span></span><button id="trash" onclick="doClear()">trash</button></span>
+		<span></span><button id="trash" onclick="trashScreenOn()">trash</button></span>
 		<span><button id="undo" onclick="undoButton()">undo</button></span>
 		<span><button id="redo" onclick="redoButton()">redo</button></span>
 	</p></span>
@@ -18,26 +18,32 @@
 	<canvas id="canvas"></canvas>
 
 	<div id="colorPalette">
-		<button id= "createStencils">Stencils</button>
-		<!-- these buttons are all referenced in the js, as long as the ID remains the same stencils will work-->
-		<button id="removeStencil" onclick="removeStencil()">Remove Stencil</button>
-		<button id= "iguanaStencil" value="Iguana">Iguana</button>
-		<button id= "frogStencil" value="Frog">Frog</button>
-		<button id= "jaguarStencil" value="Jaguar">Jaguar</button>
-		<button id= "monkeyStencil" value="Monkey">Monkey</button>
-		<button id= "slothStencil" value="Sloth">Sloth</button>
-		<button id= "toucanStencil" value="Toucan">Toucan</button>
-		<span><button id="redColor" value="#F7325E"></button><button id="pinkColor" value="#F96574"></button></span>
-		<p></p>
-		<span><button id="orangeColor" value="#FFB629"></button><button id="yellowColor" value="#ECD12E"></button></span>
-		<p></p>
-		<span><button id="greenColor" value="#A4C963"></button><button id="mintColor" value="#5CBF9F"></button></span>
-		<p></p>
-		<span><button id="blueColor" value="#75C9E3"></button><button id="purpleColor" value="#8B699B"></button></span>
-		<p></p>
-		<span><button id="whiteColor" value="#FFFFFF"></button><button id="blackColor" value="#000000"></button></span>
+		<button id="showStencils" onclick="stencilScreenOn()">Stencils</button>
+		<div>
+			<span><button id="redColor" value="#F7325E"></button><button id="pinkColor" value="#F96574"></button></span>
+		</div>
+
+		<div>
+			<span><button id="orangeColor" value="#FFB629"></button><button id="yellowColor" value="#ECD12E"></button></span>
+		</div>
+		
+		<div>
+			<span><button id="greenColor" value="#A4C963"></button><button id="mintColor" value="#5CBF9F"></button></span>
+		</div>
+		
+		<div>
+			<span><button id="blueColor" value="#75C9E3"></button><button id="purpleColor" value="#8B699B"></button></span>
+		</div>
+
+		<div>
+			<span><button id="whiteColor" value="#FFFFFF"></button><button id="blackColor" value="#000000"></button></span>
+		</div>
+
 		<input type="range" id="sizeSlider" min="1" max="10" value="3">
-		<button id="completeButton" onclick="completeScreenOn()">Complete</button>
+
+		<button id="completeButton" onclick="checkCompleteOn()"> Complete </button>
+		
+		
 	</div>
 
 	<div id="completeScreen">
@@ -46,6 +52,35 @@
 			<p></p>
 		<span><button id="downloadLink" onclick="exportCanvasAsPNG()">Download</button></span>
 		<span><button id="closeCompleteScreen" onclick="completeScreenOff()">Finish</button></span>
+	</div>
+
+	<div id="stencilScreen">
+		<button class="stencils" id="removeStencil" onclick="removeStencil()">Remove Stencil</button>
+		<button class="stencils" id= "iguanaStencil" value="Iguana">Iguana</button>
+		<button class="stencils" id= "frogStencil" value="Frog">Frog</button>
+		<button class="stencils" id= "jaguarStencil" value="Jaguar">Jaguar</button>
+		<button class="stencils" id= "monkeyStencil" value="Monkey">Monkey</button>
+		<button class="stencils" id= "slothStencil" value="Sloth">Sloth</button>
+		<button class="stencils" id= "toucanStencil" value="Toucan">Toucan</button>
+		<button id="exitStencils" onclick="stencilScreenOff()">X</button>
+	</div>
+
+	<div id="trashScreen">
+		<strong>Are you sure you want to trash your drawing?</strong>
+		<div>
+			<button id="trashYes" onclick="trashDrawing()">Yes</button>
+			<button id="trashNo" onclick="trashScreenOff()">No</button>
+		</div>
+		
+	</div>
+	
+	<div id="completeCheckScreen">
+		<strong>Are you sure you want to complete your drawing?</strong>
+		<div>
+			<button id="completeYes" onclick="completeWasChecked()">Yes</button>
+			<button id="completeNo" onclick="checkCompleteOff()">No</button>
+		</div>
+		
 	</div>
 
 	<p id="drawingList"></p>

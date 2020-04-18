@@ -1,7 +1,7 @@
 body{
    background: whitesmoke;
    font-family: 'Heebo', sans-serif;
-   /* overflow: hidden; */
+   overflow: hidden;
 }
 
 button:focus {outline:0;}
@@ -17,32 +17,39 @@ canvas{
    height: 100%;
 }
 
-#completeButton, #clearButton, #createStencils, #sizeSlider{
+#completeButton, #clearButton, #showStencils, #sizeSlider{
    right: 0;
-   position: absolute;
    font-family: 'Heebo', sans-serif;
 
 }
 
 #completeButton{
    margin-top: 20vw;
+   width: 90%;
+   background: #219679;
+   border: none;   
 }
 
 #sizeSlider{
-   margin-top: 10vw;
+   width: 95%;
+   margin-top: 15%;
 }
 
-#completeButton :hover, #clearButton :hover, #createStencils :hover, #sizeSlider :hover{
+#completeButton :hover, #clearButton :hover, #showStencils :hover, #sizeSlider :hover{
    background-color:lightgray;
 }
 
 #colorPalette{
    right: 0;
+   top:2%;
    margin-top: 2vw;
    align-self: center;
-   z-index: 2;
+   z-index: 1;
    position: absolute;
-   height: 50vw;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   height: 100%;
    background-color: lightgray;
    width: 10%;
    align-items: center;
@@ -51,7 +58,7 @@ canvas{
 
 #redColor, #pinkColor{
    margin-top:75%;
-   top:0;
+   
 }
 #redColor, #pinkColor, #orangeColor, #yellowColor, #greenColor, #mintColor, #blueColor, #purpleColor, #whiteColor, #blackColor{
    width: 25px;
@@ -62,6 +69,7 @@ canvas{
 
 #redColor, #orangeColor, #greenColor, #blueColor, #whiteColor{
    margin-right: 10px;
+   margin-top: 10px;
 }
 
 #redColor{
@@ -122,18 +130,35 @@ canvas{
    border: 2px solid #5F5F5F;
 }
 
-#completeScreen{
-position: fixed; /* Sit on top of the page content */
-display: none; /* Hidden by default */
-width: 100%; /* Full width (cover the whole page) */
-height: 100%; /* Full height (cover the whole page) */
+#completeScreen, #stencilScreen{
+position: fixed; 
+display: none;
+width: 100%;
+height: 100%;
 top: 0;
 left: 0;
 right: 0;
 bottom: 0;
-background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-cursor: pointer; /* Add a pointer on hover */
+background-color: rgba(0,0,0,0.5);
+z-index: 2;
+cursor: pointer;
+}
+
+#trashScreen, #completeCheckScreen{
+   position: fixed;
+   display: none;
+   top: 50%;
+   left: 50%;
+   -webkit-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+   width: 50%;
+   height: 25%;
+   background-color: gray;
+   z-index: 2;
+   cursor: pointer;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;   
 }
 
 /* TOP OF THE PAGE */
@@ -141,14 +166,16 @@ cursor: pointer; /* Add a pointer on hover */
 width: 100%; 
 height: 2vw; 
 background-color: #086951;
-z-index: 2;
+z-index: 3;
 }
 
 #trash, #undo{
    float: right;
+   z-index: 3;
 }
 
 #bannerTitle{
    color: white;
    margin-left: 10px;
+
 }
