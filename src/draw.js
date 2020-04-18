@@ -383,7 +383,7 @@ function stencilScreenOff(){
 }
 
 function completeScreenOn() {
-	document.getElementById("completeScreen").style.display = "block";
+	document.getElementById("completeScreen").style.display = "flex";
 }
   
 function completeScreenOff() {
