@@ -6,33 +6,156 @@ body{
 
 button:focus {outline:0;}
 
+#stencilPreview{
+   display:flex;
+   margin-top: 4vh;
+   height: 175px;
+   width: 85%;
+}
+
+#treeImage{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 22vw;
+   height: 100%;
+   user-select: none;
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+}
+
+
+#flowers{
+   position: absolute;
+   right: 5vw;
+   bottom: 0;
+   height: 200px;
+   width: 300px;
+   z-index: 3;
+}
+
 #drawingList{
    visibility: hidden;
 }
 
 canvas{
-   background: #ffffff;
    float: left;
    width: 100%;
    height: 100%;
+   top:0;
+   left:0;
+   bottom:0;
+   background: linear-gradient(179.96deg, #F9FCFE -5.71%, #F9FCFE 27.86%, rgba(207, 235, 244, 0.8) 80.93%);
+   
+}
+
+#trash, #redo, #undo{
+   border-radius: 50%;
+   border-color: transparent;
+   width: 40px;
+   height: 40px;
+   margin-top: 2vh;
+   margin-right: 10px;
+   background-color: #219679;
+}
+
+#showStencils{
+   border-radius: 50%;
+   border-color: transparent;
+   width: 25px;
+   height: 25px;
+   margin-top: 3vh;
+   margin-right: 1vw;
+   display: flex;
+   position: absolute;
+   background-color: #219679;
+   background-image: url("./assets/stencilIcon.png");
+   background-size: auto;
+   background-repeat: no-repeat;
+   background-position: center;
+}
+
+#trash{
+   background-image: url("./assets/trashIcon.png");
+   background-size: auto;
+   background-repeat: no-repeat;
+   background-position: center;
+   margin-left: 25px;
+}
+
+#undo{
+   background-image: url("./assets/undoIcon.png");
+   background-size: auto;
+   background-repeat: no-repeat;
+   background-position: center;
+}
+
+#redo{
+   background-image: url("./assets/redoIcon.png");
+   background-size: auto;
+   background-repeat: no-repeat;
+   background-position: center;
 }
 
 #completeButton, #clearButton, #showStencils, #sizeSlider{
    right: 0;
    font-family: 'Heebo', sans-serif;
-
 }
 
 #completeButton{
-   margin-top: 20vw;
-   width: 90%;
-   background: #219679;
-   border: none;   
+   margin-top: 3vh;
+   margin-bottom: 2vh;
+   width: 80%;
+   height: 45px;
+   background: #194149;
+   border-color: #194149;
+   border-radius: 8px;   
+   color: white;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 14px;
+   line-height: 20px;
+   font-family: 'Heebo';
 }
 
 #sizeSlider{
-   width: 95%;
-   margin-top: 15%;
+   width: 75%;
+   margin-top: 10vh;
+   -webkit-appearance: none;
+   height: 10px;
+   border-radius: 5px;  
+   background: #BFEADF;
+   outline: none;
+   opacity: 0.7;
+   -webkit-transition: .2s;
+   transition: opacity .2s;
+}
+
+#sizeSlider::-webkit-slider-thumb{
+   -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+#sizeSlider::-moz-range-thumb{
+   width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+#topButtons{
+   flex-direction: row;
+   justify-content: center;
+   display: flex;
+   height: 50px;
 }
 
 #completeButton :hover, #clearButton :hover, #showStencils :hover, #sizeSlider :hover{
@@ -41,115 +164,114 @@ canvas{
 
 #colorPalette{
    right: 0;
-   top:2%;
-   margin-top: 2vw;
+   top:0;
    align-self: center;
-   z-index: 1;
+   z-index: 4;
    position: absolute;
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    flex-direction: column;
    height: 100%;
-   background-color: lightgray;
-   width: 10%;
+   background-color: white;
+   width: 15%;
    align-items: center;
-   
+   box-shadow: -2px 4px 4px lightgray;
 }
 
 #redColor, #pinkColor{
-   margin-top:75%;
+   margin-top: 5vh;
    
 }
 #redColor, #pinkColor, #orangeColor, #yellowColor, #greenColor, #mintColor, #blueColor, #purpleColor, #whiteColor, #blackColor{
-   width: 25px;
-   height: 25px;
+   width: 30px;
+   height: 30px;
    border-radius: 100%;
    border-color: black; 
 }
 
 #redColor, #orangeColor, #greenColor, #blueColor, #whiteColor{
-   margin-right: 10px;
-   margin-top: 10px;
+   margin-right: 50px;
+   margin-top: 25px;
 }
 
 #redColor{
    background: #F7325E;
-   border: 2px solid #5F5F5F;
+   border: none;
 }
 
 #pinkColor{
    background: #F96574;
-   border: 2px solid #5F5F5F;
+   border: none;
 }
 
 #orangeColor{
    background: #FFB629;
    opacity: 0.8;
-   border: 2px solid #5F5F5F;
+   border: none;
 }
 
 #yellowColor{
    background: #ECD12E;
    opacity: 0.8;
-   border: 2px solid #5F5F5F;
+   border: none;
 }
 
 #greenColor{
    background: #A4C963;
    opacity: 0.8;
-   border: 2px solid #5F5F5F;
+   border: none;
 }
 
 #mintColor{
    background: #5CBF9F;
    opacity: 0.8;
-   border: 2px solid #5F5F5F;
+   border: none;
 }
 
 #blueColor{
    background: #75C9E3;
    opacity: 0.8;
-   border: 2px solid #5F5F5F;
+   border: none;
 }
 
 #purpleColor{
    background: #8B699B;
    opacity: 0.8;
-   border: 2px solid #5F5F5F;
+   border: none;
 }
 
 #whiteColor{
    background: #FFFFFF;
    opacity: 0.8;
-   border: 2px solid #5F5F5F;
+   border: 1px solid black;
 }
 
 #blackColor{
    background: #000000;
    opacity: 0.8;
-   border: 2px solid #5F5F5F;
+   border: none;
 }
 
 #completeScreen, #stencilScreen{
-position: fixed; 
-display: none;
-width: 100%;
-height: 100%;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: rgba(0,0,0,0.5);
-z-index: 2;
-cursor: pointer;
-justify-content: center;
-flex-direction: column;
-align-items: center;
+   position: fixed; 
+   display: none;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0,0,0,0.5);
+   z-index: 2;
+   cursor: pointer;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
 }
 
 #trashScreen, #completeCheckScreen{
    position: fixed;
-   display: none;
+   display: flex;
    top: 50%;
    left: 50%;
    -webkit-transform: translate(-50%, -50%);
@@ -164,21 +286,3 @@ align-items: center;
    align-items: center;   
 }
 
-/* TOP OF THE PAGE */
-#topBorder{
-width: 100%; 
-height: 2vw; 
-background-color: #086951;
-z-index: 3;
-}
-
-#trash, #undo{
-   float: right;
-   z-index: 3;
-}
-
-#bannerTitle{
-   color: white;
-   margin-left: 10px;
-
-}

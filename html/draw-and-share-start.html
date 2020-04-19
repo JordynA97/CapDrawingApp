@@ -2,23 +2,34 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="../reset.css">
 	<link rel="stylesheet" type="text/css" href="../stylesheet.css">
 	<link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
 	<title>Draw!</title>
 </head>
 <body>
-	<div id="topBorder">
-		<span><p id="bannerTitle">Draw your own creature
-		<span></span><button id="trash" onclick="trashScreenOn()">trash</button></span>
-		<span><button id="undo" onclick="undoButton()">undo</button></span>
-		<span><button id="redo" onclick="redoButton()">redo</button></span>
-	</p></span>
+	<canvas id="canvas"></canvas>
+	<div>
+		<img id="treeImage" src="../assets/treePicture.png">
 	</div>
 
-	<canvas id="canvas"></canvas>
+	<div>
+		<img id="flowers" src="../assets/flowers.png">
+	</div>	
 
 	<div id="colorPalette">
-		<button id="showStencils" onclick="stencilScreenOn()">Stencils</button>
+		<div id="topButtons">
+		<span><button id="undo" onclick="undoButton()"></button></span>
+		<span><button id="redo" onclick="redoButton()"></button></span>
+		<span><button id="trash" onclick="trashScreenOn()"></button></span>
+		</div>
+		
+		<div>
+		<button id="showStencils" onclick="stencilScreenOn()"></button>
+		</div>
+
+		<img id="stencilPreview" src="../assets/stencilPreview.png">
+
 		<div>
 			<span><button id="redColor" value="#F7325E"></button><button id="pinkColor" value="#F96574"></button></span>
 		</div>
@@ -41,7 +52,7 @@
 
 		<input type="range" id="sizeSlider" min="1" max="10" value="3">
 
-		<button id="completeButton" onclick="checkCompleteOn()"> Complete </button>
+		<button id="completeButton" onclick="checkCompleteOn()">COMPLETE</button>
 		
 		
 	</div>
@@ -75,7 +86,6 @@
 			<button id="trashYes" onclick="trashDrawing()">Yes</button>
 			<button id="trashNo" onclick="trashScreenOff()">No</button>
 		</div>
-		
 	</div>
 	
 	<div id="completeCheckScreen">
@@ -84,7 +94,6 @@
 			<button id="completeYes" onclick="completeWasChecked()">Yes</button>
 			<button id="completeNo" onclick="checkCompleteOff()">No</button>
 		</div>
-		
 	</div>
 
 	<p id="drawingList"></p>
