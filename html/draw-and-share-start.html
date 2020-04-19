@@ -73,14 +73,41 @@
 	</div>
 
 	<div id="stencilScreen">
-		<button class="stencils" id="removeStencil" onclick="removeStencil()">Remove Stencil</button>
-		<button class="stencils" id= "iguanaStencil" value="Iguana">Iguana</button>
-		<button class="stencils" id= "frogStencil" value="Frog">Frog</button>
-		<button class="stencils" id= "jaguarStencil" value="Jaguar">Jaguar</button>
-		<button class="stencils" id= "monkeyStencil" value="Monkey">Monkey</button>
-		<button class="stencils" id= "slothStencil" value="Sloth">Sloth</button>
-		<button class="stencils" id= "toucanStencil" value="Toucan">Toucan</button>
-		<button id="exitStencils" onclick="stencilScreenOff()">X</button>
+		<button class="stencils" id="removeStencil" onclick="removeStencil()">No Stencil</button>
+
+		<div id="column1">
+			<div>
+				<img class="stencilImages" id="iguanaImg" src="../assets/Iguana.png">
+				<button class="stencils" id= "iguanaStencil" value="Iguana">+</button>
+			</div>
+
+			<div>
+				<img class="stencilImages" id="frogImg" src="../assets/Frog.png">
+				<button class="stencils" id= "frogStencil" value="Frog">+</button>
+			</div>
+
+			<div>
+				<img class="stencilImages" id="jaguarImg" src="../assets/Jaguar.png">
+				<button class="stencils" id= "jaguarStencil" value="Jaguar">+</button>
+			</div>
+		</div>
+
+		<div id="column2">
+			<div>
+				<img class="stencilImages" id="monkeyImg" src="../assets/Monkey.png">
+				<button class="stencils" id= "monkeyStencil" value="Monkey">+</button>
+			</div>
+
+			<div>
+				<img class="stencilImages" id="slothImg" src="../assets/Sloth.png">
+				<button class="stencils" id= "slothStencil" value="Sloth">+</button>
+			</div>
+
+			<div>
+				<img class="stencilImages" id="toucanImg" src="../assets/Toucan.png">
+				<button class="stencils" id= "toucanStencil" value="Toucan">+</button>
+			</div>
+		</div>
 	</div>
 
 	<div id="trashScreen">

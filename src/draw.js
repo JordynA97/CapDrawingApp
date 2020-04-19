@@ -346,6 +346,8 @@ function stencilSelect(){
 		currentStencil = this.value;
 		loadStencil(this.value);
 	}
+
+	stencilScreenOff();
 }
 
 function removeStencil(){
@@ -353,6 +355,7 @@ function removeStencil(){
 	var ctx = canvas.getContext('2d');
 	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 	loadDrawing(allPoints);
+	stencilScreenOff();
 }
 
 function trashDrawing(){
@@ -377,7 +380,7 @@ function trashScreenOff(){
 }
 
 function stencilScreenOn(){
-	document.getElementById("stencilScreen").style.display = "block";
+	document.getElementById("stencilScreen").style.display = "flex";
 }
 
 function stencilScreenOff(){

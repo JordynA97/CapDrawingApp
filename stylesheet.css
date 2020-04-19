@@ -278,9 +278,59 @@ canvas{
    z-index: 8;
    cursor: pointer;
    justify-content: center;
+   flex-direction: row;
+   align-items: center;
+}
+
+#iguanaStencil, #monkeyStencil, #jaguarStencil, #toucanStencil, #frogStencil, #slothStencil{
+   margin-top: -2vh;
+   margin-left: -1vw;
+   position: fixed;
+   background: #194149;
+   border-radius: 50%;
+   height: 30px;
+   width: 30px;
+   border-color: transparent;
+   color: white;
+   font-weight: 900px;
+}
+
+#column1, #column2{
+   width: 50%;
+   justify-content: center;
    flex-direction: column;
    align-items: center;
 }
+
+.stencilImages{
+   width: 20vw;
+   height: 25vh;
+   background-color: white;
+   margin-bottom: 4vh;
+}
+
+#column1{
+   margin-left: 28vw;
+   margin-top: 5vh;
+}
+
+#column2{
+   margin-left: -28vw;
+   margin-top: 5vh;
+}
+
+
+#removeStencil{
+   position: absolute;
+   top:0;
+   background: #194149;
+   border-bottom-left-radius: 6.5px;
+   border-bottom-right-radius: 6.5px;
+   border-color: transparent;
+   color: white;
+   width: 10vw;
+}
+
 
 /* DOUBLE CHECKING OVERLAYS */
 #trashScreen, #completeCheckScreen{
