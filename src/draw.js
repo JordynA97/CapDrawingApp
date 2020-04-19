@@ -368,10 +368,12 @@ function completeWasChecked(){
 
 function trashScreenOn(){
 	document.getElementById("trashScreen").style.display = "flex";
+	document.getElementById("overlayBackground").style.display = "block";
 }
 
 function trashScreenOff(){
 	document.getElementById("trashScreen").style.display = "none";
+	document.getElementById("overlayBackground").style.display = "none";
 }
 
 function stencilScreenOn(){
@@ -400,8 +402,10 @@ function completeScreenOff() {
 
 function checkCompleteOn(){
 	document.getElementById("completeCheckScreen").style.display = "flex";
+	document.getElementById("overlayBackground").style.display = "block";
 }
 
 function checkCompleteOff(){
 	document.getElementById("completeCheckScreen").style.display = "none";
+	document.getElementById("overlayBackground").style.display = "none";
 }

@@ -8,14 +8,16 @@
 	<title>Draw!</title>
 </head>
 <body>
-	<canvas id="canvas"></canvas>
 	<div>
 		<img id="treeImage" src="../assets/treePicture.png">
 	</div>
 
 	<div>
 		<img id="flowers" src="../assets/flowers.png">
-	</div>	
+	</div>
+
+	<canvas id="canvas"></canvas>
+		
 
 	<div id="colorPalette">
 		<div id="topButtons">
@@ -58,14 +60,15 @@
 	</div>
 
 	<div id="completeScreen">
+		<strong style="font-family: 'Heebo'; color:white; font-size: 25px; margin-top: 35%">Name Your Creature:</strong>
+
 		<div>
-			<strong>Name Your Creature:</strong>
-			<input type="text" id="creatureName"></input>
+		<input type="text" id="creatureName"></input>
 		</div>
 	
 		<div>
 			<span><button id="downloadLink" onclick="exportCanvasAsPNG()">Download</button></span>
-			<span><button id="closeCompleteScreen" onclick="completeScreenOff()">Finish</button></span>
+			<span><button id="finishButton" onclick="completeScreenOff()">Finish</button></span>
 		</div>
 	</div>
 
@@ -81,20 +84,21 @@
 	</div>
 
 	<div id="trashScreen">
-		<strong>Are you sure you want to trash your drawing?</strong>
+		<p style="font-size: 24px">Are you sure you want to <span style="font-weight: 900;">delete</span> this drawing?</p>
 		<div>
-			<button id="trashYes" onclick="trashDrawing()">Yes</button>
-			<button id="trashNo" onclick="trashScreenOff()">No</button>
+			<button id="trashYes" onclick="trashDrawing()">Delete</button>
+			<button id="trashNo" onclick="trashScreenOff()">Keep Drawing</button>
 		</div>
 	</div>
 	
 	<div id="completeCheckScreen">
-		<strong>Are you sure you want to complete your drawing?</strong>
+		<p style="font-size: 24px">Are you sure you are <span style="font-weight: 900">completed</span> with this drawing?</p>
 		<div>
-			<button id="completeYes" onclick="completeWasChecked()">Yes</button>
-			<button id="completeNo" onclick="checkCompleteOff()">No</button>
+			<button id="completeYes" onclick="completeWasChecked()">Complete</button>
+			<button id="completeNo" onclick="checkCompleteOff()">Keep Drawing</button>
 		</div>
 	</div>
+	<div id="overlayBackground"></div>
 
 	<p id="drawingList"></p>
 	<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>

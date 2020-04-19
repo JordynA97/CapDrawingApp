@@ -1,10 +1,19 @@
 body{
    background: whitesmoke;
-   font-family: 'Heebo', sans-serif;
+   font-family: 'Heebo';
    overflow: hidden;
 }
 
+p{
+   font-family: 'Heebo';
+}
+
 button:focus {outline:0;}
+
+button{
+   font-family: 'Heebo';
+   font-size: 18px
+}
 
 #stencilPreview{
    display:flex;
@@ -20,10 +29,10 @@ button:focus {outline:0;}
    width: 22vw;
    height: 100%;
    user-select: none;
--moz-user-select: none;
--webkit-user-drag: none;
--webkit-user-select: none;
--ms-user-select: none;
+   -moz-user-select: none;
+   -webkit-user-drag: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
 }
 
 
@@ -34,6 +43,11 @@ button:focus {outline:0;}
    height: 200px;
    width: 300px;
    z-index: 3;
+   user-select: none;
+   -moz-user-select: none;
+   -webkit-user-drag: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
 }
 
 #drawingList{
@@ -48,7 +62,6 @@ canvas{
    left:0;
    bottom:0;
    background: linear-gradient(179.96deg, #F9FCFE -5.71%, #F9FCFE 27.86%, rgba(207, 235, 244, 0.8) 80.93%);
-   
 }
 
 #trash, #redo, #undo{
@@ -262,27 +275,81 @@ canvas{
    right: 0;
    bottom: 0;
    background-color: rgba(0,0,0,0.5);
-   z-index: 2;
+   z-index: 8;
    cursor: pointer;
    justify-content: center;
    flex-direction: column;
    align-items: center;
 }
 
+/* DOUBLE CHECKING OVERLAYS */
 #trashScreen, #completeCheckScreen{
    position: fixed;
-   display: flex;
+   display: none;
    top: 50%;
    left: 50%;
    -webkit-transform: translate(-50%, -50%);
    transform: translate(-50%, -50%);
-   width: 50%;
+   width: 46%;
    height: 25%;
-   background-color: gray;
-   z-index: 2;
+   background-color: white;
+   z-index: 6;
    cursor: pointer;
    justify-content: center;
    flex-direction: column;
    align-items: center;   
 }
 
+#overlayBackground {
+   display: none;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   z-index: 5;
+   background-color: grey;
+   opacity: 0.5;
+}
+
+/* OVERLAY BUTTONS/INPUTS */
+#completeYes, #trashYes{
+   border: 1px solid #219679;
+   color: #219679;
+   box-sizing: border-box;
+   border-radius: 6.5px;
+   margin-right: 25px;
+   height: 6vh;
+   width: 15vw;
+   margin-top: 5vh;
+}
+
+#completeNo, #trashNo{
+   background: #219679;
+   border-radius: 6.5px;
+   border-color: transparent;
+   color: white;
+   margin-top: 5vh;
+   height: 6vh;
+   width: 15vw;
+}
+
+#creatureName{
+   border-radius: 6.5px;
+   border-color: transparent;
+   width: 30vw;
+   height: 5vh;
+   margin-top: 4vh;
+}
+
+#downloadLink, #finishButton{
+   border-radius: 4px;
+   border-color: transparent;
+   background-color: #219679;
+   margin-top: 5vh;
+   font-family: 'Heebo';
+   height: 5vh;
+   width: 10vw;
+}
+
+#finishButton{
+   margin-left: 5vw;
+}
