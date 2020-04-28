@@ -389,7 +389,7 @@ canvas{
    border-color: transparent;
    width: 30vw;
    height: 5vh;
-   margin-top: 4vh;
+   margin-top: 1vh;
    grid-area: name;
 }
 
@@ -398,7 +398,7 @@ canvas{
    border-color: transparent;
    background-color: #194149;
    color: white;
-   margin-top: 5vh;
+   margin-top: 1vh;
    font-family: 'Heebo';
    height: 5vh;
    width: 10vw;
@@ -432,8 +432,7 @@ canvas{
 #nameText{
    grid-area: nText;
    margin-left: 10vw;
-   margin-top: 4vh;
-   height: 5vh;
+   margin-top: 3vh;
 }
 #downloadLink{
    grid-area: download;
