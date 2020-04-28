@@ -213,7 +213,7 @@ function onLocationHashChanged(){
 
 function exportCanvasAsPNG() {
 	//console.log("button going through")
-
+	
 	imgURL = canvas.toDataURL("image/png"); //gets canvas data as png
 	
 	dlLink = document.createElement('a');//creates a download link
@@ -224,6 +224,11 @@ function exportCanvasAsPNG() {
 	document.body.appendChild(dlLink);//adds the download link
  	dlLink.click();//auto clicks the link
 	document.body.removeChild(dlLink);//deletes the link
+}
+
+function addToPage(){
+	document.querySelector("#creatureFinal").src = canvas.toDataURL("image/png");
+	
 }
 
 function changePenSize(){ //just takes the slider val and changes line width.
@@ -406,6 +411,7 @@ function completeScreenOff() {
 function checkCompleteOn(){
 	document.getElementById("completeCheckScreen").style.display = "flex";
 	document.getElementById("overlayBackground").style.display = "block";
+	addToPage();
 }
 
 function checkCompleteOff(){
