@@ -28,7 +28,7 @@
     "eslint-plugin-import": "^2.20.0"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-favicon": "^2.0.1",
     "serve-favicon": "^2.5.0"
   }
